@@ -58,13 +58,13 @@ function cdnList(){
     switch(parms[1].toLowerCase())
     {
         case "profiles":
-            console.log("Listing profiles...")
+            console.log("Listing profiles...");
             cdnClient.profiles.listByResourceGroup(resourceGroupName, callback);
             break;
 
         case "endpoints":
-            requireParms(3)
-            console.log("Listing endpoints...")
+            requireParms(3);
+            console.log("Listing endpoints...");
             cdnClient.endpoints.listByProfile(parms[2], resourceGroupName, callback);
             break;
 
@@ -109,14 +109,14 @@ function cdnCreateProfile() {
 // create endpoint <profile name> <endpoint name> <origin hostname>        
 function cdnCreateEndpoint() {
     requireParms(5);
-    console.log("Creating endpoint...")
+    console.log("Creating endpoint...");
     var endpointProperties = {
         location: resourceLocation,
         origins: [{
             name: parms[4],
             hostName: parms[4]
         }]
-    }
+    };
 
     cdnClient.endpoints.create(parms[3], endpointProperties, parms[2], resourceGroupName, callback);
 }
@@ -128,14 +128,14 @@ function cdnDelete() {
         // delete profile <profile name>
         case "profile":
             requireParms(3);
-            console.log("Deleting profile...")
+            console.log("Deleting profile...");
             cdnClient.profiles.deleteIfExists(parms[2], resourceGroupName, callback);
             break;
 
         // delete endpoint <profile name> <endpoint name>
         case "endpoint":
-            requireParms(4)
-            console.log("Deleting endpoint...")
+            requireParms(4);
+            console.log("Deleting endpoint...");
             cdnClient.endpoints.deleteIfExists(parms[3], parms[2], resourceGroupName, callback);
             break;
 
@@ -145,10 +145,10 @@ function cdnDelete() {
     }
 }
 
-// purge <endpoint name> <path>
+// purge <profile name> <endpoint name> <path>
 function cdnPurge() {
     requireParms(4);
-    console.log("Purging endpoint...")
+    console.log("Purging endpoint...");
     var purgeContentPaths = [ parms[3] ];
     cdnClient.endpoints.purgeContent(parms[2], parms[1], resourceGroupName, purgeContentPaths, callback);
 }
