@@ -1,0 +1,16 @@
+{
+  "name": "cdn_node",
+  "version": "1.0.0",
+  "description": "Azure CDN Node.js tutorial project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cam Soper",
+  "license": "MIT",
+  "dependencies": {
+    "azure-arm-cdn": "^0.2.1",
+    "azure-arm-storage": "^0.13.1-preview",
+    "ms-rest-azure": "^1.14.4"
+  }
+}
